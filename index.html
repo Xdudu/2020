@@ -1,0 +1,471 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+  <meta charset="utf-8">
+  <title>2 0 2 0</title>
+  <style>
+    body {
+      padding: 0;
+      margin: 0;
+      background: black;
+      width: 100vw;
+      height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    svg {
+      width: 100vmin;
+    }
+    .virus-stroke {
+      stroke:#c413c6;
+      stroke-width: 2;
+      fill: none;
+      opacity: 0.9;
+    }
+    .virus-stroke-1 {
+      opacity: 0.6;
+      stroke-width: 1.5;
+      stroke: #05a3ca;
+    }
+    .virus-stroke-2 {
+      opacity: 0.4;
+      stroke-width: 1.5;
+      stroke: #ddd507;
+    }
+    .virus-stroke-3 {
+      opacity: 0.4;
+      stroke-width: 1.5;
+      stroke: #17961d;
+    }
+  </style>
+</head>
+
+<body>
+  <svg viewBox="0 0 1050 1050">
+    <g>
+      <path class="virus-stroke virus-stroke-3" />
+      <path class="virus-stroke virus-stroke-2" />
+      <path class="virus-stroke virus-stroke-1" />
+      <path class="virus-stroke" />
+    </g>
+  </svg>
+  <script src="js/simplex-noise.js"></script>
+  <script>
+    const pathObj = [
+      {
+        endPoint: [560.5, 100]
+      },
+      {
+        controlPointStart: [
+          572, 100.2
+        ],
+        controlPointEnd: [
+          591, 108.5
+        ],
+        endPoint: [595.5, 111]
+      }, {
+        controlPointStart: [
+          635.4, 121
+        ],
+        controlPointEnd: [
+          646.7, 127.5
+        ],
+        endPoint: [676, 94]
+      }, {
+        controlPointStart: [
+          682, 85
+        ],
+        controlPointEnd: [
+          681.5, 69.2
+        ],
+        endPoint: [692.5, 64]
+      }, {
+        controlPointStart: [
+          708.2, 56.6
+        ],
+        controlPointEnd: [
+          730.5, 72
+        ],
+        endPoint: [736.5, 78]
+      }, {
+        controlPointStart: [
+          740.1, 120.4
+        ],
+        controlPointEnd: [
+          712.8, 118.1
+        ],
+        endPoint: [716.5, 133]
+      }, {
+        controlPointStart: [
+          717.9, 138.5
+        ],
+        controlPointEnd: [
+          781.2, 193.2
+        ],
+        endPoint: [793, 205]
+      }, {
+        controlPointStart: [
+          800.5, 232.5
+        ],
+        controlPointEnd: [
+          845, 251.5
+        ],
+        endPoint: [852.5, 279]
+      }, {
+        controlPointStart: [
+          866.5, 287
+        ],
+        controlPointEnd: [
+          873.5, 304
+        ],
+        endPoint: [887.5, 312]
+      }, {
+        controlPointStart: [
+          914, 317.3
+        ],
+        controlPointEnd: [
+          955.5, 260.8
+        ],
+        endPoint: [955.5, 305]
+      }, {
+        controlPointStart: [
+          955.5, 306
+        ],
+        controlPointEnd: [
+          991.5, 349.5
+        ],
+        endPoint: [973.5, 346]
+      }, {
+        controlPointStart: [
+          958, 348
+        ],
+        controlPointEnd: [
+          935, 382
+        ],
+        endPoint: [919.5, 384]
+      }, {
+        controlPointStart: [
+          918.5, 395.5
+        ],
+        controlPointEnd: [
+          906.5, 393.5
+        ],
+        endPoint: [905.5, 405]
+      }, {
+        controlPointStart: [
+          909.8, 451.5
+        ],
+        controlPointEnd: [
+          940.3, 480.9
+        ],
+        endPoint: [942.5, 501]
+      }, {
+        controlPointStart: [
+          946.1, 533
+        ],
+        controlPointEnd: [
+          920.5, 600
+        ],
+        endPoint: [929.5, 627]
+      }, {
+        controlPointStart: [
+          938.6, 654.2
+        ],
+        controlPointEnd: [
+          989.5, 666.4
+        ],
+        endPoint: [989.5, 697]
+      }, {
+        controlPointStart: [
+          985.5, 701
+        ],
+        controlPointEnd: [
+          981.5, 705
+        ],
+        endPoint: [977.5, 709]
+      }, {
+        controlPointStart: [
+          964.5, 722
+        ],
+        controlPointEnd: [
+          930.8, 679
+        ],
+        endPoint: [911.5, 679]
+      }, {
+        controlPointStart: [
+          890.3, 679
+        ],
+        controlPointEnd: [
+          879.2, 742.9
+        ],
+        endPoint: [862.5, 754]
+      }, {
+        controlPointStart: [
+          862.5, 839.9
+        ],
+        controlPointEnd: [
+          746.1, 826.6
+        ],
+        endPoint: [707.5, 884.5]
+      }, {
+        controlPointStart: [
+          707.5, 910.1
+        ],
+        controlPointEnd: [
+          744.3, 934.1
+        ],
+        endPoint: [725.5, 955]
+      }, {
+        controlPointStart: [
+          712.1, 969.9
+        ],
+        controlPointEnd: [
+          692.7, 1003.6
+        ],
+        endPoint: [673.5, 994]
+      }, {
+        controlPointStart: [
+          673, 993
+        ],
+        controlPointEnd: [
+          637.5, 980.2
+        ],
+        endPoint: [635.5, 976]
+      }, {
+        controlPointStart: [
+          629.5, 957
+        ],
+        controlPointEnd: [
+          647.5, 926
+        ],
+        endPoint: [653.5, 901]
+      }, {
+        controlPointStart: [
+          598.1, 845.6
+        ],
+        controlPointEnd: [
+          564.4, 899.9
+        ],
+        endPoint: [506.5, 911.5]
+      }, {
+        controlPointStart: [
+          470.5, 913
+        ],
+        controlPointEnd: [
+          434.5, 914.5
+        ],
+        endPoint: [398.5, 916]
+      }, {
+        controlPointStart: [
+          389.3, 922.9
+        ],
+        controlPointEnd: [
+          386.9, 990.9
+        ],
+        endPoint: [352, 991.3]
+      }, {
+        controlPointStart: [
+          345.8, 991.4
+        ],
+        controlPointEnd: [
+          311.5, 979.3
+        ],
+        endPoint: [302.5, 970]
+      }, {
+        controlPointStart: [
+          296.2, 949.5
+        ],
+        controlPointEnd: [
+          343, 925.7
+        ],
+        endPoint: [343, 893.5]
+      }, {
+        controlPointStart: [
+          331.4, 847.2
+        ],
+        controlPointEnd: [
+          177.8, 743.3
+        ],
+        endPoint: [136.5, 733]
+      }, {
+        controlPointStart: [
+          100.7, 724.1
+        ],
+        controlPointEnd: [
+          108.3, 784.8
+        ],
+        endPoint: [80.5, 757]
+      }, {
+        controlPointStart: [
+          72.2, 732.1
+        ],
+        controlPointEnd: [
+          66.6, 703
+        ],
+        endPoint: [83.5, 680.5]
+      }, {
+        controlPointStart: [
+          94.8, 669.2
+        ],
+        controlPointEnd: [
+          111.2, 674.5
+        ],
+        endPoint: [127, 674.5]
+      }, {
+        controlPointStart: [
+          161.4, 622.9
+        ],
+        controlPointEnd: [
+          149.2, 620
+        ],
+        endPoint: [136.5, 550]
+      }, {
+        controlPointStart: [
+          132.6, 528.8
+        ],
+        controlPointEnd: [
+          144.7, 455.2
+        ],
+        endPoint: [127.5, 438]
+      }, {
+        controlPointStart: [
+          107.1, 427.8
+        ],
+        controlPointEnd: [
+          93.2, 458.1
+        ],
+        endPoint: [76.5, 433]
+      }, {
+        controlPointStart: [
+          75.4, 420.7
+        ],
+        controlPointEnd: [
+          61.8, 397.8
+        ],
+        endPoint: [61.5, 390.7]
+      }, {
+        controlPointStart: [
+          63, 380.5
+        ],
+        controlPointEnd: [
+          77, 363.3
+        ],
+        endPoint: [89.5, 357]
+      }, {
+        controlPointStart: [
+          104.2, 354.5
+        ],
+        controlPointEnd: [
+          127.5, 365
+        ],
+        endPoint: [145.5, 367]
+      }, {
+        controlPointStart: [
+          189.4, 350.6
+        ],
+        controlPointEnd: [
+          175.1, 295.4
+        ],
+        endPoint: [207.5, 263]
+      }, {
+        controlPointStart: [
+          233.9, 236.6
+        ],
+        controlPointEnd: [
+          250.6, 246.9
+        ],
+        endPoint: [277.5, 220]
+      }, {
+        controlPointStart: [
+          277.5, 205.1
+        ],
+        controlPointEnd: [
+          375, 183.7
+        ],
+        endPoint: [377.5, 171]
+      }, {
+        controlPointStart: [
+          381.5, 164
+        ],
+        controlPointEnd: [
+          352.3, 132.7
+        ],
+        endPoint: [354.5, 123]
+      }, {
+        controlPointStart: [
+          357.1, 110.3
+        ],
+        controlPointEnd: [
+          399.3, 108
+        ],
+        endPoint: [411.5, 116]
+      }, {
+        controlPointStart: [
+          425.9, 125.4
+        ],
+        controlPointEnd: [
+          424.7, 158.9
+        ],
+        endPoint: [433.5, 156]
+      }, {
+        controlPointStart: [
+          491.9, 136.5
+        ],
+        controlPointEnd: [
+          495.5, 116.8
+        ],
+        endPoint: [560.5, 100]
+      }
+    ]
+
+    const simplex = new SimplexNoise('seed')
+
+    const getRandomTranslate = (x, y) => ({
+      r: 12 * simplex.noise2D(x, y),
+      theta: Math.PI * simplex.noise2D(x, -y)
+    })
+
+    const getTranslatedPoint = ([ x0, y0 ], { r, theta }) => ([
+      x0 + r * Math.cos(theta),
+      y0 + r * Math.sin(theta),
+    ])
+
+    const getCurrentPoint = ([ x0, y0 ], timestamp, i) => (
+      getTranslatedPoint([ x0, y0 ], getRandomTranslate(timestamp, i))
+    )
+
+    const getNewCurrentPathStr = (timestamp, offset) => {
+      const currentPathObj = pathObj.map((segment, i) => ({
+        ...segment,
+        endPoint: getCurrentPoint(segment.endPoint, (timestamp + offset) / 3333, i)
+      }))
+      currentPathObj[currentPathObj.length - 1].endPoint = currentPathObj[0].endPoint
+
+      return currentPathObj.reduce(
+        (str, { controlPointStart, controlPointEnd, endPoint }, i) => (
+        str + (
+          i === 0
+          ? `M${endPoint.join(',')}`
+          : `C${controlPointStart.join(',')},${controlPointEnd.join(',')},${endPoint.join(',')}`
+        )
+      ), '')
+    }
+
+    const animateVirus = timestamp => {
+      const virusStrokeEls = document.getElementsByClassName('virus-stroke')
+
+      Array.from(virusStrokeEls).forEach((virusStrokeEl, i) => {
+        const pathStr = getNewCurrentPathStr(timestamp, i * 10000)
+        virusStrokeEl.setAttribute('d', pathStr)
+      })
+
+      window.requestAnimationFrame(animateVirus)
+    }
+
+    window.requestAnimationFrame(animateVirus)
+  </script>
+</body>
+
+</html>
